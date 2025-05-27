@@ -16,9 +16,9 @@ class pasien {
             cout << "Pasien \"" << nama
             << "\" tidak ada\n";    
         }
-        
+        void tambahDokter(dokter*);
+        void cetakDokter();    
 };
-
 class dokter {
     public:
         string nama;
@@ -29,11 +29,25 @@ class dokter {
         }
 
         ~dokter() {
-            cout << "Dokter \"" << nama
-            << "\" tidak ada\n";    
+            cout << "Dokter \"" << nama<< "\" tidak ada\n";    
         }
 
         void tambahPasien(pasien* pPasien);
         void cetakPasien();
 };
+
+void pasien::tambahDokter(dokter* pDokter) {
+    daftar_dokter.push_back(pDokter);
+}
+void pasien::cetakDokter() {
+    cout << "Daftar Dokter yang menangani pasien \"" << this->nama << "\":\n";
+    for (auto& a : daftar_dokter) {
+        cout << a->nama << "\n";
+    }
+    cout << endl;
+}
+void dokter::tambahPasien(pasien* pPasien) {
+    daftar_pasien.push_back(pPasien);
+    pPasien->tambahDokter(this);
+}
 
