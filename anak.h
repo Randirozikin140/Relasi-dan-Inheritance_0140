@@ -1,7 +1,7 @@
 #ifndef ANAK_H
 #define ANAK_H
 
-
+//mendefinisikan class anak
 class anak{
     public:
         string nama;
